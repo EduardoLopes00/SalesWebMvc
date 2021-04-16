@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SalesWebMvc.Models;
 using SalesWebMvc.Services;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,17 @@ namespace SalesWebMvc.Controllers
             return View(list);
         }
 
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
 
+        [HttpPost] //Indica que o método é post
+        [ValidateAntiForgeryToken] //Proteção contra ataques na mesma autenticaçãoi
+        public IActionResult Create(Seller seller) {
+            _sellersService.Insert(seller);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
