@@ -1,0 +1,18 @@
+﻿using System.Collections.Generic;
+
+namespace SalesWebMvc.Models.ViewModels
+{
+    public class SellerFormViewModel
+    {
+        public Seller Seller { get; set; }
+        public ICollection<Department> Departments { get; set; }
+
+        public SellerFormViewModel() { }
+
+
+        public SellerFormViewModel(ICollection<Department> departments)
+        {
+            Departments = departments;
+        }
+    }
+}
